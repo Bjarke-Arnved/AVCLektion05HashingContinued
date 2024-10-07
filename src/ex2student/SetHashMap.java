@@ -114,8 +114,10 @@ public class SetHashMap<K, V> implements MapI<K, V> {
     public Set<K> keys() {
         Set<K> keys = new LinkedHashSet<>();
         for(int i = 0; i < table.length; i++) {
-            for(Entry<K, V> entry : table[i]) {
-                keys.add(entry.key);
+            if(table[i] != null) {
+                for(Entry<K, V> entry : table[i]) {
+                    keys.add(entry.key);
+                }
             }
         }
         // TODO
@@ -129,6 +131,13 @@ public class SetHashMap<K, V> implements MapI<K, V> {
     public List<V> values() {
         List<V> values = new LinkedList<>();
         // TODO
+        for(int i = 0; i < table.length; i++) {
+            if(table[i] != null) {
+                for (Entry<K, V> entry : table[i]) {
+                    values.add(entry.value);
+                }
+            }
+        }
         return values;
     }
 
