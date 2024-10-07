@@ -76,16 +76,20 @@ public class SetHashMap<K, V> implements MapI<K, V> {
      */
     @Override
     public V put(K key, V value) {
-        HashSet<Entry<K, V>> entrySet = table[hash(key)];
-
         V oldValue = null;
-        if(entrySet != null) {
-            if(entryOfKey(key) != null) {
-                
+        if(entryOfKey(key) != null) {
+            if(entryOfKey(key).key == key) {
+                oldValue = entryOfKey(key).value;
             }
+            entryOfKey(key).value = value;
+            entryOfKey(key).key = key;
+        }
+        else {
+            entryOfKey(key).value = value;
+            entryOfKey(key).key = key;
         }
         // TODO
-        return null;
+        return oldValue;
     }
 
 
