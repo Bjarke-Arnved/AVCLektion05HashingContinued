@@ -101,7 +101,10 @@ public class SetHashMap<K, V> implements MapI<K, V> {
     @Override
     public V remove(K key) {
         // TODO
-        return null;
+        V value = null;
+        value = entryOfKey(key).value;
+        table[hash(key)] = null;
+        return value;
     }
 
     /**
