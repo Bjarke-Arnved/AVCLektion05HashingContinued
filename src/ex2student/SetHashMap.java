@@ -113,6 +113,11 @@ public class SetHashMap<K, V> implements MapI<K, V> {
     @Override
     public Set<K> keys() {
         Set<K> keys = new LinkedHashSet<>();
+        for(int i = 0; i < table.length; i++) {
+            for(Entry<K, V> entry : table[i]) {
+                keys.add(entry.key);
+            }
+        }
         // TODO
         return keys;
     }
